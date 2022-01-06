@@ -41,14 +41,19 @@
   text-align: center;
 }
 .messages {
-  height: calc(100vh - 190px);
+  height: calc(100vh - 205px);
   overflow-y: auto;
   border-bottom: 1px solid #ebebeb;
 }
 .video-grid{
+  display: flex;
+  align-items: center;
   position: absolute;
   right: 0;
   z-index:2;
+}
+.video-grid-invisible{
+  display: none;
 }
 .video-invisible{
   transition: display 5s;
@@ -73,4 +78,28 @@
     display: none;
   }
 }
+@media screen and (max-width: 540px) {
+  .video-grid{
+    flex-direction: column;
+    width: 100%;
+   
+  }
+  
+}
+@media screen and (max-width: 414px) {
+  .video-grid{
+    flex-direction: column;
+   
+  }
+  
+}
+@media screen and (max-width: 375px) {
+  .video-grid{
+    flex-direction: column;
 
+  }
+  .remote-user-video{
+    margin-top: 40px;
+    
+  }
+}

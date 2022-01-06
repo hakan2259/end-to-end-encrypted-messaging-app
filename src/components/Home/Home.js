@@ -52,7 +52,7 @@ function Home() {
   const [img, setImg] = useState("");
   const [video, setVideo] = useState("");
   const [messages, setMessages] = useState([]);
-  const [videoCallDisabled, setVideoCallDisabled] = useState(false);
+  const [videoCallVisible, setVideoCallVisible] = useState(false);
 
   const user1 = auth.currentUser.uid;
 
@@ -63,6 +63,7 @@ function Home() {
   var currentCall;
 
   useEffect(() => {
+ 
     const usersRef = collection(db, "users");
     const q = query(usersRef, where("uid", "not-in", [user1]));
     const unsub = onSnapshot(q, (querySnapshot) => {
@@ -121,12 +122,10 @@ function Home() {
         remoteVideoRef.current.play();
       });
     });
-    setVideoCallDisabled(true);
+    setVideoCallVisible(true);
   };
 
-  const videoDisabled = () => {
-    setVideoCallDisabled(false);
-  };
+  
   const selectUser = async (user) => {
     setChat(user);
 
@@ -230,15 +229,15 @@ function Home() {
           />
         ))}
       </div>
-      <div className="video-grid">
-        <Grid container>
-          <Grid item xs={5}>
-            <video ref={currentUserVideoRef} />
-          </Grid>
-          <Grid item xs>
-            <video ref={remoteVideoRef} />
-          </Grid>
-        </Grid>
+      <div className={`${videoCallVisible ? "video-grid" : "video-grid-invisible"}`}>
+   
+         
+            <video ref={currentUserVideoRef} className="current-user-video"/>
+         
+   
+            <video ref={remoteVideoRef} className="remote-user-video"/>
+      
+      
       </div>
 
       <div className="messages-container">
