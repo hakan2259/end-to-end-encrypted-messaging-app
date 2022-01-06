@@ -1,0 +1,86 @@
+.user-wrapper {
+  margin-bottom: 2px;
+  padding: 10px;
+  cursor: pointer;
+}
+.user-wrapper:hover {
+  background: #ebebeb;
+}
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.user-detail {
+  display: flex;
+  align-items: center;
+  
+}
+
+.user-detail h4 {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.user-detail small {
+  font-size: 12px;
+}
+.selected-user {
+  background: #ebebeb;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #ebebeb;
+}
+.avatar:hover {
+  opacity: 0.7;
+}
+.user-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.online {
+  background: #32cd32;
+}
+.offline {
+  background: #b22222;
+}
+.truncate {
+  margin-top: -3px;
+  margin-bottom: -3px;
+  font-size: 10px;
+  white-space: nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.truncate strong {
+  margin-right: 10px;
+}
+.unread {
+  margin-left: 10px;
+  background: blue;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 10px;
+}
+.sm-container > .MuiAvatar-root {
+  display: none;
+}
+@media screen and (max-width: 576px) {
+  .user-wrapper {
+    display: none;
+  }
+  .sm-container {
+    padding: 10px 0px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .sm-container > .MuiAvatar-root {
+    display: inline-block;
+  }
+}
