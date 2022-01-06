@@ -27,12 +27,13 @@
   text-align: center;
   align-items: center;
   border-bottom: 2px solid #ebebeb;
-  justify-content : flex-end;
+  justify-content : flex-start;
 }
 .messages-user h3 {
   margin-left: 10px;
   font-size: 14px;
   margin-right: auto;
+  
 }
 .no-conversation {
   font-size: 20px;
@@ -102,4 +103,20 @@
     margin-top: 40px;
     
   }
+  .messages-user{
+    justify-content: flex-start;
+  }
+  .messages-user h3{
+   margin-right: 230px;
+  }
+}
+@media screen and (max-width: 360px){
+  .messages-user h3{
+    margin-right: 220px;
+   }
+}
+@media screen and (max-width: 320px){
+  .messages-user h3{
+    margin-right: 180px;
+   }
 }

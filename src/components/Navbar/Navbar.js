@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import StatusOnline from "../svg/Online";
+import Logo from "../../logo.png";
 import "./Navbar.css";
 
 function Navbar() {
@@ -26,8 +27,10 @@ function Navbar() {
   return (
     <nav>
       <h3 className="navbar">
-        <Link to="/">NKU ÇMF Chat App</Link>
-       
+        <div className="navbar-logo">
+          <Link to="/"><img src={Logo} alt="Logo" className="logo" /></Link>
+          <Link to="/" ><span className="logo-text">NKU ÇMF Chat App</span></Link>
+        </div>
       </h3>
 
       <div>

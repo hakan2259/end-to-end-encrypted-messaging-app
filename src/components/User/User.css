@@ -49,6 +49,7 @@
 .offline {
   background: #b22222;
 }
+
 .truncate {
   margin-top: -3px;
   margin-bottom: -3px;
@@ -71,6 +72,9 @@
 .sm-container > .MuiAvatar-root {
   display: none;
 }
+.sm-screen{
+  background-color: red;
+}
 @media screen and (max-width: 576px) {
   .user-wrapper {
     display: none;
@@ -83,4 +87,5 @@
   .sm-container > .MuiAvatar-root {
     display: inline-block;
   }
+  
 }

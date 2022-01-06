@@ -19,8 +19,6 @@ const Profile = () => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
 
-  
-
   useEffect(() => {
     getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
       if (docSnap.exists) {
@@ -99,7 +97,6 @@ const Profile = () => {
           </div>
         </div>
         <div className="text-container">
-          {user?.peerId}
           <h3>{user?.name}</h3>
           <p>{user?.email}</p>
           <hr />

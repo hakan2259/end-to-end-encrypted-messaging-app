@@ -4,7 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../../firebase.js";
-import Photo from '../svg/Photo.js';
+import Photo from "../svg/Photo.js";
 
 import "./User.css";
 
@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 10,
     backgroundColor: "#FF6347",
   },
+  onlineSmall: {
+    width: theme.spacing(5),
+    height: theme.spacing(5),
+    paddingTop: 10,
+    backgroundColor: "#32cd32",
+  },
 }));
 const User = ({ user, selectUser, user1, chat, decryptMessage }) => {
   const classes = useStyles();
@@ -33,7 +39,7 @@ const User = ({ user, selectUser, user1, chat, decryptMessage }) => {
     });
     return () => unsub();
   }, []);
- 
+
   return (
     <>
       <div
@@ -66,7 +72,11 @@ const User = ({ user, selectUser, user1, chat, decryptMessage }) => {
         {data && (
           <p className="truncate">
             <strong>{data.from === user1 ? "Me:" : null}</strong>
-            {data?.media ? "Picture" : data?.video ? "Video" : decryptMessage(data?.text)}
+            {data?.media
+              ? "Picture"
+              : data?.video
+              ? "Video"
+              : decryptMessage(data?.text)}
           </p>
         )}
       </div>
@@ -74,9 +84,15 @@ const User = ({ user, selectUser, user1, chat, decryptMessage }) => {
         onClick={() => selectUser(user)}
         className={`sm-container ${chat.name === user.name && "selected-user"}`}
       >
-        <Avatar className={`${classes.small} sm-screen`}>
-          {user?.name.substring(0, 1).toUpperCase()}
-        </Avatar>
+        {user?.isOnline ? (
+          <Avatar className={`${classes.onlineSmall} sm-screen`}>
+            {user?.name.substring(0, 1).toUpperCase()}
+          </Avatar>
+        ) : (
+          <Avatar className={`${classes.small} sm-screen`}>
+            {user?.name.substring(0, 1).toUpperCase()}
+          </Avatar>
+        )}
       </div>
     </>
   );
