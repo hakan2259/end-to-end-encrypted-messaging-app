@@ -63,7 +63,6 @@ function Home() {
   var currentCall;
 
   useEffect(() => {
- 
     const usersRef = collection(db, "users");
     const q = query(usersRef, where("uid", "not-in", [user1]));
     const unsub = onSnapshot(q, (querySnapshot) => {
@@ -125,7 +124,6 @@ function Home() {
     setVideoCallVisible(true);
   };
 
-  
   const selectUser = async (user) => {
     setChat(user);
 
@@ -225,19 +223,18 @@ function Home() {
             selectUser={selectUser}
             user1={user1}
             chat={chat}
-            decryptMessage = {decryptMessage}
+            decryptMessage={decryptMessage}
           />
         ))}
       </div>
-      <div className={`${videoCallVisible ? "video-grid" : "video-grid-invisible"}`}>
-   
-         
-            <video ref={currentUserVideoRef} className="current-user-video"/>
-         
-   
-            <video ref={remoteVideoRef} className="remote-user-video"/>
-      
-      
+      <div
+        className={`${
+          videoCallVisible ? "video-grid" : "video-grid-invisible"
+        }`}
+      >
+        <video ref={currentUserVideoRef} className="current-user-video" />
+
+        <video ref={remoteVideoRef} className="remote-user-video" />
       </div>
 
       <div className="messages-container">
@@ -266,17 +263,27 @@ function Home() {
                 <DuoIcon style={{ fontSize: 35 }} />
               </IconButton>
             </div>
-
+           
             <div className="messages">
               {messages.length
                 ? messages.map((message, i) => (
-                    <Message key={i} message={message} decryptMessage={decryptMessage} user1={user1} />
+                    <Message
+                      key={i}
+                      img={img}
+                      message={message}
+                      decryptMessage={decryptMessage}
+                      user1={user1}
+                    />
                   ))
                 : null}
             </div>
+            
+            
             <MessageForm
               handleSubmit={handleSubmit}
               text={text}
+              img={img}
+              video={video}
               setText={setText}
               setImg={setImg}
               setVideo={setVideo}

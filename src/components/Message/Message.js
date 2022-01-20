@@ -4,7 +4,7 @@ import ModalImage from "react-modal-image";
 import ReactPlayer from "react-player";
 import "./Message.css";
 
-const Message = ({ message, user1, decryptMessage }) => {
+const Message = ({ message, user1, decryptMessage, img }) => {
   const scrollRef = useRef();
   useEffect(() => {
     scrollRef.current?.scrollIntoView({
@@ -13,6 +13,7 @@ const Message = ({ message, user1, decryptMessage }) => {
   }, [message]);
   return (
     <div
+    
       className={`message-wrapper ${message?.from === user1 ? "own" : ""}`}
       ref={scrollRef}
     >
@@ -36,12 +37,17 @@ const Message = ({ message, user1, decryptMessage }) => {
           controls />
         ) : null}
         {decryptMessage(message?.text)}
+       
         <br />
         <small>
           <Moment fromNow>{message?.createdAt.toDate()}</Moment>
+       
         </small>
+        
       </p>
+     
     </div>
+    
   );
 };
 

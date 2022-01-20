@@ -35,3 +35,9 @@
 .text-container h3{
     text-align: left;
 }
+@media screen and (max-width:375px){
+    .img-container img{
+        width: 80px;
+        height: 80px;
+    }
+}

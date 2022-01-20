@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Photo from "../svg/Photo";
 import Video from '../svg/Video';
 import "./MessageForm.css";
@@ -15,10 +15,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MessageForm = ({ handleSubmit, text, setText, setImg, setVideo }) => {
+
+
+const MessageForm = ({ handleSubmit, text, img, video, setText, setImg, setVideo }) => {
   const classes = useStyles();
+  useEffect(() => {
+      if(img){
+        alert(img.name + " adlı resim yüklendi")
+      }
+      if(video){
+        alert(video.name + " adlı video yüklendi")
+      }
+      
+  },[img,video])
   return (
+    
     <form className="message-form">
+      
       <label htmlFor="img">
         <Photo />
       </label>
@@ -52,8 +65,12 @@ const MessageForm = ({ handleSubmit, text, setText, setImg, setVideo }) => {
       <IconButton aria-label="delete" onClick={handleSubmit}>
         <SendIcon />
       </IconButton>
+      
     </form>
+   
+   
   );
+  
 };
 
 export default MessageForm;
